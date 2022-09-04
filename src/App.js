@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <img className={classes.logo} src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Charter_Communications_logo.svg/2880px-Charter_Communications_logo.svg.png" alt="charter-communications-logo" />
+      <img className={classes.logo} src="charter-communications-logo.ico" alt="charter-communications-logo" />
       <h3>Customer reward points</h3>
       <button data-testid="data-button" onClick={() => getData()}>refresh data</button>
       {renderedCustomerPurchases}
