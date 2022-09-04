@@ -2,8 +2,7 @@ import React from 'react';
 import './Customer.css';
 
 const Customer = props => {
-
-  const getPoints = (amount) => {
+  const purchasePoints = (amount) => {
     switch (true) {
       case (amount < 51): {
         return 0;
@@ -18,50 +17,64 @@ const Customer = props => {
     }
   }
 
-  const getTotalPoints = () => {
-    let totalPoints = 0;
+  const totalPoints = () => {
+    let points = 0;
     props.customer.purchases.forEach(purchase => {
-      totalPoints += getPoints(purchase.amount)
+      points += purchasePoints(purchase.amount)
     })
-    return totalPoints;
+    return points;
   };
 
-  const filterPurchasesByDate = purchases => {
-    const currentDate = new Date()
-    return purchases.filter(purchase => {
+  const monthlyTotals = () => {
+    const totals = {};
+    props.customer.purchases.forEach(purchase => {
       const purchaseDate = new Date(purchase.date)
-      const reportStartDate = currentDate.setMonth(currentDate.getMonth() - 3);
-      return purchaseDate <= reportStartDate
-
-    })
-  }
-
-  const getMonthlyTotalPoints = (purchases) => {
-    const filteredPurchases = filterPurchasesByDate(purchases)
-    const monthlyTotals = {};
-    filteredPurchases.forEach(purchase => {
-      const purchaseDate = new Date(purchase.date)
-      const purchaseMonthName = purchaseDate.toLocaleString('default', { month: 'short' });
-
-      if (!monthlyTotals[purchaseMonthName]) {
-        monthlyTotals[purchaseMonthName] = getPoints(purchase.amount)
-      } else {
-        monthlyTotals[purchaseMonthName] += getPoints(purchase.amount)
+      const sequence = purchaseDate.getMonth()
+      const monthName = purchaseDate.toLocaleString('default', { month: 'short' });
+      if (!totals[monthName]) {
+        totals[monthName] = { points: purchasePoints(purchase.amount), sequence }
+      } else if (totals[monthName]) {
+        totals[monthName].points += purchasePoints(purchase.amount)
       }
+      return null;
     })
-
-    console.log('monthlyTotals: ', monthlyTotals);
-    return monthlyTotals;
+    return totals;
   }
 
-  getMonthlyTotalPoints(props.customer.purchases)
+  const monthlyTotalsTable = () => {
+    const totals = monthlyTotals();
+    const monthlylTotalRows = [];
 
-  const customerPurchases = props.customer.purchases?.map(purchase => {
+    for (const month in totals) {
+      monthlylTotalRows.push(
+        <tr className="table__monthly-rows" key={totals[month].sequence}>
+          <td>
+            {month}
+          </td>
+          <td>{totals[month].points}
+          </td>
+        </tr>
+      )
+    }
+
+    return (
+      <table className="table__monthly-totals">
+        <tbody>
+          <tr>
+            <th>month</th>
+            <th>points</th>
+          </tr>
+          {monthlylTotalRows}
+        </tbody>
+      </table>);
+  };
+
+  const purchasesTable = props.customer.purchases?.map(purchase => {
     return (
       <tr key={purchase.id}>
-        <td>{purchase.date}</td>
+        <td>{purchase.date.split('T')[0]}</td>
         <td>${purchase.amount}</td>
-        <td>{getPoints(purchase.amount)}</td>
+        <td>{purchasePoints(purchase.amount)}</td>
       </tr>
     )
   });
@@ -78,11 +91,13 @@ const Customer = props => {
             <th>amount</th>
             <th>points</th>
           </tr>
-          {customerPurchases}
+          {purchasesTable}
         </tbody>
       </table>
-      {/* <h4 className="card__totalpoints">monthly total rewards: {getMonthlyTotalPoints(props.customer.purchases)}</h4> */}
-      <h4 className="card__totalpoints">total rewards: {getTotalPoints()}</h4>
+      {monthlyTotalsTable()}
+      <div className="card__totalpoints">
+        total points: {totalPoints()}
+      </div>
     </div>
   )
 }

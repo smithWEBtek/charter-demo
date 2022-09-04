@@ -6,6 +6,14 @@ table {
   /* border: 1px solid rgb(11, 73, 14); */
 }
 
+.table__monthly-totals {
+  width: auto;
+}
+
+.table__monthly-rows {
+  text-align: left;
+}
+
 th {
   text-align: left;
 }
@@ -27,8 +35,8 @@ thead th:nth-child(4) {
 
 .card {
   border: 2px solid rgb(105, 103, 103);
-  border-radius: 0.3em;
-  margin-bottom: 1em;
+  border-radius: 0.5em;
+  margin: 0.5em 0 1em 0;
 }
 
 .card__name {
@@ -37,6 +45,7 @@ thead th:nth-child(4) {
 }
 
 .card__totalpoints {
-  text-align: right;
-  margin-right: 2em;
+  margin: 0.5em;
+  font-size: large;
+  font-weight: bold;
 }
