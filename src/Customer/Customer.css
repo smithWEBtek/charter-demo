@@ -1,0 +1,42 @@
+table {
+  /* table-layout: fixed; */
+  width: 100%;
+  padding: 8px;
+  /* border-collapse: collapse; */
+  /* border: 1px solid rgb(11, 73, 14); */
+}
+
+th {
+  text-align: left;
+}
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+}
+
+.card {
+  border: 2px solid rgb(105, 103, 103);
+  border-radius: 0.3em;
+  margin-bottom: 1em;
+}
+
+.card__name {
+  margin: 0.5em;
+  background-color: rgb(236, 244, 237);
+}
+
+.card__totalpoints {
+  text-align: right;
+  margin-right: 2em;
+}
