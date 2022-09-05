@@ -3,8 +3,9 @@ import Customer from './Customer/Customer';
 import classes from './App.modules.css';
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
-  const url = 'data.json'
+  const url = 'http://localhost:3000/data.json'
   const getData = () => {
     fetch(url)
       .then(response => response.json())
@@ -14,20 +15,21 @@ const App = () => {
 
   useEffect(() => {
     getData()
+    setLoading(false)
   }, [])
 
   const renderedCustomerPurchases = data.customers?.map(customer => {
     return <Customer customer={customer} key={customer.id} />
   })
 
-  return (
-    <div className="App">
+  const renderedData = loading ? (<p>Loading data ...</p >) :
+    (<div className="App">
       <img className={classes.logo} src="charter-communications-logo.ico" alt="charter-communications-logo" />
       <h3>Customer reward points</h3>
-      <button data-testid="data-button" onClick={() => getData()}>refresh data</button>
       {renderedCustomerPurchases}
-    </div>
-  );
+    </div>);
+
+  return renderedData;
 }
 
 export default App;
