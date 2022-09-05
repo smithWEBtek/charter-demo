@@ -16,7 +16,7 @@ export const purchasePoints = amount => {
   }
 }
 
-export const monthlyTotals = (purchases) => {
+export const monthlyTotals = purchases => {
   const totals = {};
   purchases.forEach(purchase => {
     const purchaseDate = new Date(purchase.date)
@@ -32,7 +32,7 @@ export const monthlyTotals = (purchases) => {
   return totals;
 }
 
-export const monthlyTotalsTable = (purchases) => {
+export const monthlyTotalsTable = purchases => {
   const totals = monthlyTotals(purchases);
   const monthlylTotalRows = [];
 
@@ -60,7 +60,7 @@ export const monthlyTotalsTable = (purchases) => {
     </table>);
 };
 
-export const purchasesTable = (purchases) => {
+export const purchasesTable = purchases => {
   return purchases.map(purchase => {
     return (
       <tr key={purchase.id}>
