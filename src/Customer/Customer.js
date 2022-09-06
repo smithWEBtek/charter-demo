@@ -86,8 +86,8 @@ const Customer = props => {
       <div
         className={classes.Cardname}
         data-testid={props.customer.testid}>{props.customer.name}</div>
+      <div className={classes.Table__purchases_label}>purchases</div>
       <table>
-        <div className={classes.Table__purchases_label}>purchases</div>
         <tbody>
           <tr>
             <th>date</th>
