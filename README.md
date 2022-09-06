@@ -11,6 +11,22 @@ SEE package.json
     "start-all": "json-server data.json -p 3001 & react-scripts start",
 ```
 
+### To start the app and the json-server, run:
+
+```
+$ npm run start-all
+```
+
+#### This runs the app on port 3000, with data.
+
+Open [http://localhost:3000](http://localhost:3000) to view the App in your browser.
+
+#### and the json-server for data on port 3001.
+
+Open [http://localhost:3001/data.json](http://localhost:3001/data.json) to view the JSON data in your browser.
+
+---
+
 ### To start the App alone with no data, run:
 
 ```
@@ -26,22 +42,6 @@ The app will run on `http://localhost:3000`, with no data.
 ```
 $ npm run start-data
 ```
-
-Open [http://localhost:3001/data.json](http://localhost:3001/data.json) to view the JSON data in your browser.
-
----
-
-### To start BOTH the app and the json-server, run:
-
-```
-$ npm run start-both
-```
-
-#### This runs the app on port 3000, with data.
-
-Open [http://localhost:3000](http://localhost:3000) to view the App in your browser.
-
-#### and the json-server for data on port 3001.
 
 Open [http://localhost:3001/data.json](http://localhost:3001/data.json) to view the JSON data in your browser.
 
