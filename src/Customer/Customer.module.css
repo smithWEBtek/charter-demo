@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+  padding: 8px;
+}
+
+.Table__purchases_label {
+  font-weight: bold;
+}
+
+.Table__monthlytotals {
+  width: auto;
+}
+
+.Table__monthlyrows {
+  text-align: left;
+}
+
+th {
+  text-align: left;
+}
+
+.Card {
+  border: 1px solid rgb(155, 151, 151);
+  border-radius: 0.6em;
+  margin: 0.5em 0 1em 0;
+}
+
+.Cardname {
+  border-radius: 0.5em 0.5em 0 0;
+  background-color: rgb(218, 230, 220);
+  border-bottom: 1px solid rgb(155, 151, 151);
+  font-weight: bold;
+  padding: 0 0.5em;
+}
+
+.Card__totalpoints {
+  margin: 0.5em;
+  font-size: large;
+  font-weight: bold;
+}

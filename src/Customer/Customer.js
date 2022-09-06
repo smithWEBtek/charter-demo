@@ -1,5 +1,5 @@
 import React from 'react';
-import './Customer.css';
+import classes from './Customer.module.css';
 
 export const purchasePoints = amount => {
   switch (true) {
@@ -32,34 +32,6 @@ export const monthlyTotals = purchases => {
   return totals;
 }
 
-export const monthlyTotalsTable = purchases => {
-  const totals = monthlyTotals(purchases);
-  const monthlylTotalRows = [];
-
-  for (const month in totals) {
-    monthlylTotalRows.push(
-      <tr className="table__monthly_rows" key={totals[month].sequence}>
-        <td>
-          {month}
-        </td>
-        <td>{totals[month].points}
-        </td>
-      </tr>
-    )
-  }
-
-  return (
-    <table className={"table__monthly_totals"}>
-      <tbody>
-        <tr>
-          <th>month</th>
-          <th>points</th>
-        </tr>
-        {monthlylTotalRows}
-      </tbody>
-    </table>);
-};
-
 export const purchasesTable = purchases => {
   return purchases.map(purchase => {
     return (
@@ -72,6 +44,34 @@ export const purchasesTable = purchases => {
   });
 }
 
+export const monthlyTotalsTable = purchases => {
+  const totals = monthlyTotals(purchases);
+  const monthlylTotalRows = [];
+
+  for (const month in totals) {
+    monthlylTotalRows.push(
+      <tr className={classes.Table__monthly_rows} key={totals[month].sequence}>
+        <td>
+          {month}
+        </td>
+        <td>{totals[month].points}
+        </td>
+      </tr>
+    )
+  }
+
+  return (
+    <table className={classes.Table__monthlytotals}>
+      <tbody>
+        <tr>
+          <th>monthly</th>
+          <th>point totals</th>
+        </tr>
+        {monthlylTotalRows}
+      </tbody>
+    </table>);
+};
+
 const Customer = props => {
   const totalPoints = () => {
     let points = 0;
@@ -82,11 +82,12 @@ const Customer = props => {
   };
 
   return (
-    <div key={props.customer.id} className="card">
+    <div key={props.customer.id} className={classes.Card}>
       <div
-        className={"card__name"}
+        className={classes.Cardname}
         data-testid={props.customer.testid}>{props.customer.name}</div>
       <table>
+        <div className={classes.Table__purchases_label}>purchases</div>
         <tbody>
           <tr>
             <th>date</th>
@@ -97,7 +98,7 @@ const Customer = props => {
         </tbody>
       </table>
       {monthlyTotalsTable(props.customer.purchases)}
-      <div className="card__totalpoints">
+      <div className={classes.Card__totalpoints}>
         total points: {totalPoints()}
       </div>
     </div>
