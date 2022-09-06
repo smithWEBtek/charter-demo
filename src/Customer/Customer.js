@@ -64,7 +64,7 @@ export const monthlyTotalsTable = purchases => {
     <table className={classes.Table__monthlytotals}>
       <tbody>
         <tr>
-          <th>monthly</th>
+          <th>Monthly</th>
           <th>point totals</th>
         </tr>
         {monthlylTotalRows}
@@ -86,20 +86,20 @@ const Customer = props => {
       <div
         className={classes.Cardname}
         data-testid={props.customer.testid}>{props.customer.name}</div>
-      <div className={classes.Table__purchases_label}>purchases</div>
+      <div className={classes.Table__purchases_label}>Purchases</div>
       <table>
         <tbody>
           <tr>
-            <th>date</th>
-            <th>amount</th>
-            <th>points</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Points</th>
           </tr>
           {purchasesTable(props.customer.purchases)}
         </tbody>
       </table>
       {monthlyTotalsTable(props.customer.purchases)}
       <div className={classes.Card__totalpoints}>
-        total points: {totalPoints()}
+        Total reward points {totalPoints()}
       </div>
     </div>
   )

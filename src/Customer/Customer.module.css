@@ -4,6 +4,7 @@ table {
 }
 
 .Table__purchases_label {
+  margin: 0.5em 0 0 0.7em;
   font-weight: bold;
 }
 
@@ -35,6 +36,6 @@ th {
 
 .Card__totalpoints {
   margin: 0.5em;
-  font-size: large;
+  font-size: normal;
   font-weight: bold;
 }
