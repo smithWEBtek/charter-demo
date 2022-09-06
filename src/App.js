@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Customer from './Customer/Customer';
-import './App.css';
+import classes from './App.module.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ const App = () => {
   })
 
   const renderedData = loading ? (<p>Loading data ...</p >) :
-    (<div className="App">
+    (<div className={classes.App}>
       <img src="charter-communications-logo.ico" alt="charter-communications-logo" />
       <h3>Customer reward points</h3>
       {renderedCustomerPurchases}
