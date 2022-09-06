@@ -1,5 +1,13 @@
 This project was created with [Create React App](https://github.com/facebook/create-react-app), and serves data with [json-server](https://www.npmjs.com/package/json-server)
 
+### Setup
+
+In the root of the project, run:
+
+```
+$ npm install
+```
+
 ### There are three commands for starting the App, the json-server, or both.
 
 SEE package.json
