@@ -1,4 +1,4 @@
-table {
+/* table {
   width: 100%;
   padding: 8px;
 }
@@ -18,7 +18,7 @@ table {
 
 th {
   text-align: left;
-}
+} */
 
 .Card {
   border: 1px solid rgb(155, 151, 151);

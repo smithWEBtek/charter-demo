@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+  padding: 8px;
+}
+
+.Table__purchases_label {
+  margin: 0.5em 0 0 0.7em;
+  font-weight: bold;
+}
+
+.Table__monthlytotals {
+  width: auto;
+}
+
+.Table__monthlyrows {
+  text-align: left;
+}
+
+th {
+  text-align: left;
+}
